@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.eBudget = new System.Windows.Forms.Label();
             this.TransactionTypeDDL = new System.Windows.Forms.ComboBox();
             this.TypeLabel = new System.Windows.Forms.Label();
@@ -46,20 +47,23 @@
             this.AccountNameLabel = new System.Windows.Forms.Label();
             this.AccountNameTB = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.AccountType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Account = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AccountDDL = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // eBudget
@@ -68,9 +72,9 @@
             this.eBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eBudget.Location = new System.Drawing.Point(353, 20);
             this.eBudget.Name = "eBudget";
-            this.eBudget.Size = new System.Drawing.Size(181, 24);
+            this.eBudget.Size = new System.Drawing.Size(187, 24);
             this.eBudget.TabIndex = 0;
-            this.eBudget.Text = "eBudgetCalculator";
+            this.eBudget.Text = "eBudget Calculator";
             this.eBudget.Click += new System.EventHandler(this.eBudget_Click);
             // 
             // TransactionTypeDDL
@@ -220,6 +224,7 @@
             this.AccountNameTB.Name = "AccountNameTB";
             this.AccountNameTB.Size = new System.Drawing.Size(161, 20);
             this.AccountNameTB.TabIndex = 22;
+            this.AccountNameTB.TextChanged += new System.EventHandler(this.AccountNameTB_TextChanged);
             // 
             // dataGridView1
             // 
@@ -236,6 +241,30 @@
             this.dataGridView1.Size = new System.Drawing.Size(476, 198);
             this.dataGridView1.TabIndex = 23;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
             // 
             // dataGridView2
             // 
@@ -292,30 +321,6 @@
             this.label3.Text = "Transactions";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // Type
-            // 
-            this.Type.HeaderText = "Type";
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
-            // 
             // AccountDDL
             // 
             this.AccountDDL.FormattingEnabled = true;
@@ -335,11 +340,32 @@
             this.label1.Text = "Account:";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(380, 679);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(163, 17);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Michael Harmon - 2020";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(574, 49);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(264, 284);
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(948, 701);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AccountDDL);
             this.Controls.Add(this.label3);
@@ -363,11 +389,13 @@
             this.Controls.Add(this.TypeLabel);
             this.Controls.Add(this.TransactionTypeDDL);
             this.Controls.Add(this.eBudget);
+            this.ForeColor = System.Drawing.Color.Green;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,6 +433,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.ComboBox AccountDDL;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
