@@ -105,7 +105,8 @@ namespace eBudgetApp
 
         /**************************************************************
         * Name: SortStack
-        * Description: sort the stack small to high
+        * Description: sort the stack small to high. 
+        * This is using the bubble sort technique
         * Input: none
         * Output: none
         ***************************************************************/
@@ -143,6 +144,7 @@ namespace eBudgetApp
         public int StackSize()
         {
             return top + 1;
+
         }
 
         /**************************************************************
@@ -176,6 +178,24 @@ namespace eBudgetApp
         public double GetAmount(int i)
         {
             return this.accounts[i].GetAcountAmount();
+        }
+
+        /**************************************************************
+        * Name: UpdateAccountAmount
+        * Description: set the account amount
+        * Input: string name, double amount
+        * Output: none
+        ***************************************************************/
+        public void UpdateAccountAmount(string name, double amount)
+        {
+           foreach(var a in this.accounts)
+            {
+                if(a.GetAccountName() == name)
+                {
+                    a.SetAcountAmount(amount);
+                    return;
+                }
+            }
         }
     }
 }

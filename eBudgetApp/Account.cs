@@ -76,6 +76,5 @@ namespace eBudgetApp
             this._amount = amount;
         }
 
-
     }
 }

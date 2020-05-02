@@ -75,6 +75,7 @@ namespace eBudgetApp
             //Get the current balance for the account to either add or remove funds
             DataGridViewRow acctRow = this.dataGridView2.SelectedRows[0];
             var acctBalance = Convert.ToDouble(acctRow.Cells["Balance"].Value.ToString(), provider);
+            var acctName = acctRow.Cells["Account"].Value.ToString();
 
             //Do some checks on our data and create the new balance for the given account using the transaction data provided
             double finalAmount = 0.00;
@@ -87,13 +88,14 @@ namespace eBudgetApp
                     {
                         if(transaction.GetTransType().ToString() == "Incoming")
                         {
+                            
                             finalAmount = acctBalance + amt;
-                            this.account.SetAcountAmount(finalAmount);
+                            accountStack.UpdateAccountAmount(acctName, finalAmount);
                         }
                         else
                         {
                             finalAmount = acctBalance - amt;
-                            this.account.SetAcountAmount(finalAmount);
+                            accountStack.UpdateAccountAmount(acctName, finalAmount);
                         }
                         foreach (DataGridViewRow row in dataGridView2.SelectedRows)
                         {
@@ -105,7 +107,6 @@ namespace eBudgetApp
                     }
 
                 }
-
                 //Add the updated account with the new balance back to the gridview
                 dataGridView2.Rows.Add(this.AccountTypeDDL.SelectedItem.ToString(), this.AccountNameTB.Text.ToString(), finalAmount);
             }
@@ -201,7 +202,6 @@ namespace eBudgetApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //dataGridView2.Columns.Clear();
             this.accountStack.SortStack();
 
             for (int i = 0; i < accountStack.StackSize(); i++)
