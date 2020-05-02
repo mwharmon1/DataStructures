@@ -33,6 +33,7 @@ namespace eBudgetApp
         //Create a new transaction queue and new account stack
         TransactionQueue transQueue = new TransactionQueue();
         AccountStack accountStack = new AccountStack();
+        Account account = new Account("", "", 0.00);
 
         public void Form1_Load(object sender, EventArgs e)
         {
@@ -87,10 +88,12 @@ namespace eBudgetApp
                         if(transaction.GetTransType().ToString() == "Incoming")
                         {
                             finalAmount = acctBalance + amt;
+                            this.account.SetAcountAmount(finalAmount);
                         }
                         else
                         {
                             finalAmount = acctBalance - amt;
+                            this.account.SetAcountAmount(finalAmount);
                         }
                         foreach (DataGridViewRow row in dataGridView2.SelectedRows)
                         {
@@ -150,7 +153,7 @@ namespace eBudgetApp
             amt = Convert.ToDouble(this.AccountAmountTB.Text.ToString(), provider);
 
             //Create the new account using the Account class
-            Account account = new Account(this.AccountTypeDDL.SelectedItem.ToString(), this.AccountNameTB.Text.ToString(), amt);
+            account = new Account(this.AccountTypeDDL.SelectedItem.ToString(), this.AccountNameTB.Text.ToString(), amt);
 
             //Push the new account to the stack
             accountStack.Push(account);
@@ -194,6 +197,19 @@ namespace eBudgetApp
 
         private void AccountNameTB_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //dataGridView2.Columns.Clear();
+            this.accountStack.SortStack();
+
+            for (int i = 0; i < accountStack.StackSize(); i++)
+            {
+                dataGridView2.Rows[i].Cells[0].Value = accountStack.GetType(i);
+                dataGridView2.Rows[i].Cells[1].Value = accountStack.GetName(i);
+                dataGridView2.Rows[i].Cells[2].Value = accountStack.GetAmount(i).ToString();
+            }
         }
     }
 }

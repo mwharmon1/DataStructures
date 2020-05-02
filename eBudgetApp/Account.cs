@@ -54,7 +54,6 @@ namespace eBudgetApp
             return this._accountName;
         }
 
-
         /**************************************************************
         * Name: GetAcountAmount
         * Description: Get and return the account amount
@@ -64,6 +63,17 @@ namespace eBudgetApp
         public double GetAcountAmount()
         {
             return this._amount;
+        }
+
+        /**************************************************************
+        * Name: SetAcountAmount
+        * Description: Get and return the account amount
+        * Input: None
+        * Output: double amount
+        ***************************************************************/
+        public void SetAcountAmount(double amount)
+        {
+            this._amount = amount;
         }
 
 
