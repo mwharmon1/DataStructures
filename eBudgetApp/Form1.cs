@@ -57,7 +57,16 @@ namespace eBudgetApp
             NumberFormatInfo provider = new NumberFormatInfo();
             provider.NumberGroupSeparator = ".";
             Double amt = 0.00;
-            amt = Convert.ToDouble(this.TransAmountTB.Text.ToString(), provider);
+
+            try
+            {
+                amt = Convert.ToDouble(this.TransAmountTB.Text.ToString(), provider);
+            }
+            catch
+            {
+                this.TransAmountTB.Text = "Invalid Entry";
+                return;
+            }
 
             //Create a new transaction using the user input
             Transaction transaction = new Transaction(this.TransactionTypeDDL.SelectedItem.ToString(), this.TransDatePicker.Value, this.TransDescriptionTB.Text.ToString(), amt);
@@ -151,7 +160,16 @@ namespace eBudgetApp
             NumberFormatInfo provider = new NumberFormatInfo();
             provider.NumberGroupSeparator = ".";
             Double amt = 0.00;
-            amt = Convert.ToDouble(this.AccountAmountTB.Text.ToString(), provider);
+
+            try
+            {
+                amt = Convert.ToDouble(this.AccountAmountTB.Text.ToString(), provider);
+            }
+            catch
+            {
+                this.AccountAmountTB.Text = "Invalid Entry";
+                return;
+            }
 
             //Create the new account using the Account class
             account = new Account(this.AccountTypeDDL.SelectedItem.ToString(), this.AccountNameTB.Text.ToString(), amt);
